@@ -1,0 +1,779 @@
+body {
+    background: linear-gradient(135deg, rgba(234, 222, 196, 0.8), rgba(220, 198, 156, 0.8)),
+                url('/Users/heragromov/Desktop/html/66f157078b534a0001dbf6a6_4.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Georgia', serif;
+    margin: 0;
+    padding: 0;
+    color: #3B1B09;
+    text-shadow: 1px 1px 2px #FFF5E1;
+}
+
+.container {
+    background-color: rgba(255, 245, 225, 0.95);
+    padding: 50px;
+    border-radius: 15px;
+    max-width: 1300px;
+    margin: 30px auto;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    border: 2px solid #A67B5B;
+    position: relative;
+}
+
+.container::before, .container::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    bottom: -10px;
+    left: -10px;
+    right: -10px;
+    border: 3px dashed #8B4513;
+    border-radius: 15px;
+    z-index: -1;
+    opacity: 0.7;
+    transform: rotate(1deg);
+    background-color: rgba(245, 222, 179, 0.1);
+}
+
+header {
+    background-color: rgba(139, 69, 19, 0.8);
+    color: #FFF8DC;
+    padding: 15px;
+    text-align: center;
+    z-index: 1000;
+    border-bottom: 3px solid #8B4513;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+h1, h2, h3 {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.product-card {
+    background-color: rgba(255, 245, 225, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid #8B4513;
+    margin: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.3);
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-card h3 {
+    font-size: 24px;
+    color: #8B4513;
+    margin-bottom: 15px;
+}
+
+.product-card p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #3B1B09;
+    margin-bottom: 20px;
+}
+
+.product-card button {
+    background-color: #8B4513;
+    color: #FFF8DC;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.product-card button:hover {
+    background-color: #A0522D;
+}
+
+footer {
+    background-color: #FFDEAD;
+    color: #8B4513;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 40px;
+    border-top: 2px solid #8B4513;
+}
+
+footer a {
+    color: #8B4513;
+    text-decoration: none;
+    font-weight: bold;
+}
+/* Стили карточек товаров */
+.product-card {
+    background-color: #FFF5E1;
+    border: 2px solid #8B4513;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 300px;
+    margin: 20px auto;
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    color: #8B4513;
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-family: 'Georgia', serif;
+    text-transform: uppercase;
+}
+
+.product-card p {
+    font-size: 16px;
+    color: #4B2C20;
+}
+
+.price {
+    font-size: 18px;
+    color: #B8860B;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.product-card button {
+    background-color: #8B4513;
+    color: #FFF5E1;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.product-card button:hover {
+    background-color: #B8860B;
+}
+
+/* Стили корзины */
+.cart-container {
+    background-color: #FFF5E1;
+    border: 2px solid #8B4513;
+    border-radius: 15px;
+    padding: 25px;
+    margin: 40px auto;
+    max-width: 600px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cart-container h2 {
+    color: #8B4513;
+    font-family: 'Georgia', serif;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+#cart-items {
+    border-top: 2px dashed #8B4513;
+    padding-top: 20px;
+    margin-top: 20px;
+    font-family: 'Georgia', serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #4B2C20;
+    text-align: left;
+}
+
+#total-cost {
+    font-weight: bold;
+    font-size: 20px;
+    color: #8B4513;
+    text-align: right;
+    margin-top: 20px;
+}
+
+.cart-container button {
+    background-color: #8B4513;
+    color: #FFF5E1;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+}
+
+.cart-container button:hover {
+    background-color: #B8860B;
+}
+.back-button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+.back-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #8B4513, #D2691E);
+    color: #FFF8DC;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 22px;
+    border-radius: 12px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+.back-button:hover {
+    background: linear-gradient(135deg, #D2691E, #8B4513);
+    transform: scale(1.05);
+}
+body {
+    background: linear-gradient(135deg, #FFFAF0, #FFF5EE);
+    font-family: 'Georgia', serif;
+    color: #3B1B09;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.product-card {
+    background: rgba(245, 222, 179, 0.9);
+    padding: 20px;
+    border-radius: 15px;
+    width: calc(33% - 20px);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    transition: transform 0.3s;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.product-card img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-card h3 {
+    margin: 15px 0;
+    color: #8B4513;
+}
+
+.product-card p {
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.product-card button {
+    background: #8B4513;
+    color: #FFF8DC;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.product-card button:hover {
+    background-color: #A0522D;
+}
+
+#cart {
+    background: rgba(139, 69, 19, 0.8);
+    color: #FFF8DC;
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 500px;
+    margin: 30px auto;
+    text-align: center;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+#cart h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+#cart-items {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+#total-cost {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.back-to-main {
+    display: inline-block;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #3B1B09;
+    padding: 15px 25px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 12px;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s, transform 0.2s;
+}
+
+.back-to-main:hover {
+    background: linear-gradient(135deg, #FFA500, #FFD700);
+    transform: scale(1.1);
+}
+
+/*адаптивность
+/* Общие стили для мобильных устройств */
+body, .container, .cart-container {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    padding: 16px;
+}
+
+.product-card {
+    flex: 1 1 calc(100% - 32px);
+    box-sizing: border-box;
+    max-width: 100%;
+    text-align: center;
+    margin: 8px;
+    padding: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Стили для планшетов (от 600px и выше) */
+@media (min-width: 600px) {
+    .product-card {
+        flex: 1 1 calc(50% - 32px);
+    }
+}
+
+/* Стили для настольных компьютеров (от 900px и выше) */
+@media (min-width: 900px) {
+    .product-card {
+        flex: 1 1 calc(33.33% - 32px);
+    }
+    .container {
+        padding: 32px;
+    }
+}
+/* Стили корзины */
+.cart-container {
+    background-color: #FFF5E1;
+    border: 2px solid #8B4513;
+    border-radius: 15px;
+    padding: 25px;
+    margin: 20px auto;
+    width: calc(100% - 40px);
+    max-width: 600px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+/* Стили для правильного размещения корзины на мобильных устройствах */
+@media (max-width: 600px) {
+    .cart-container {
+        margin: 20px auto;
+        width: calc(100% - 20px);
+    }
+}
+
+/* Адаптивные стили для более удобного размещения корзины на экранах побольше */
+@media (min-width: 601px) and (max-width: 899px) {
+    .cart-container {
+        margin: 20px auto;
+        width: calc(100% - 40px);
+    }
+}
+
+@media (min-width: 900px) {
+    .cart-container {
+        margin: 30px auto;
+        width: calc(50% - 60px);
+    }
+}
+.container {
+    max-width: 1300px; /* Вы можете изменить на нужное значение */
+    margin: 0 auto; /* Центрирование контейнера */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Центрирование карточек товаров */
+    gap: 20px; /* Отступы между карточками */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.product-card {
+    flex: 1 1 calc(30% - 40px); /* Настройка размера карточек товаров */
+    box-sizing: border-box;
+    max-width: 300px; /* Максимальная ширина для каждой карточки */
+    text-align: center;
+    margin: 8px; /* Отступы для карточек */
+    padding: 20px;
+    border: 1px solid #8B4513;
+    border-radius: 10px;
+    background-color: #FFF5E1;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-card p {
+    font-size: 16px;
+    color: #4B2C20;
+    word-wrap: break-word; /* Слово переносится, чтобы не вылезать за границы */
+    text-align: center; /* Выравнивание текста по центру */
+}
+
+/* Обновление заголовка карточки */
+.product-card h3 {
+    font-size: clamp(1em, 2.5vw, 1.4em); /* Динамический размер шрифта */
+    line-height: 1.2;
+    font-size: 1.4em; /* Размер текста можно менять по вашему вкусу */
+    word-wrap: break-word; /* Перенос длинных слов */
+    text-align: center; /* Центрирование заголовка */
+    line-height: 1.2; /* Обеспечение лучшей читаемости */
+
+    word-wrap: break-word;
+    text-align: center;
+}
+
+
+/* Текст внутри карточки */
+.product-card p {
+    font-size: clamp(0.9em, 2vw, 1em); /* Динамический размер текста */
+    line-height: 1.4; /* Обеспечение читаемости текста */
+    word-wrap: break-word; /* Перенос длинных слов */
+    word-wrap: break-word; /* Перенос длинных слов */
+    line-height: 1.4; /* Обеспечение лучшей читаемости текста */
+    overflow: visible; /* Позволяет тексту отображаться полностью */
+    text-align: center; /* Центрирование текста */
+
+}
+
+/* Общие стили для карточек товаров */
+.product-card {
+    max-width: 300px; /* Ограничение ширины карточки товара */
+    margin: 10px auto; /* Центровка карточек */
+    padding: 15px;
+    border: 1px solid #8B4513;
+    border-radius: 10px;
+    background-color: #FFF5E1;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Адаптивные стили для мобильных устройств */
+@media (max-width: 768px) {
+    .product-card {
+        max-width: 90%; /* Ширина карточек на маленьких экранах - почти полная ширина экрана */
+    }
+    
+    .product-card h3 {
+        display: -webkit-box; /* Необходимо для работы line-clamp */
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3; /* Разрешение до 3 строк для заголовка на мобильных устройствах */
+        line-clamp: 3; /* Стандартное свойство для лучшей совместимости */
+    }
+}
+
+
+@keyframes fly-to-cart {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(300px, -200px) scale(0.5);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translate(calc(100vw - 150px), -500px) scale(0.2);
+        opacity: 0;
+    }
+}
+
+.fly-item {
+    position: absolute;
+    z-index: 1000;
+    pointer-events: none;
+    animation: fly-to-cart 1s ease-in-out forwards;
+}
+/* Общие стили для карточек товаров */
+.product-card {
+    background-color: #FFF5E1;
+    border: 2px solid #8B4513;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 300px;
+    margin: 20px auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 450px; /* Минимальная высота для предотвращения слишком маленьких карточек */
+}
+
+/* Заголовок карточки */
+.product-card h3 {
+    font-size: clamp(1.2em, 2.5vw, 1.6em); /* Адаптивный размер шрифта */
+    line-height: 1.2;
+    word-wrap: break-word;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Описание карточки */
+.product-card p {
+    font-size: clamp(0.9em, 2vw, 1em); /* Адаптивный размер шрифта */
+    line-height: 1.4;
+    word-wrap: break-word; /* Перенос длинных слов */
+    text-align: center;
+    overflow: visible;
+    margin-bottom: 15px;
+}
+
+/* Адаптивные стили для небольших экранов */
+@media (max-width: 768px) {
+    .product-card {
+        width: calc(100% - 40px); /* Использование всей доступной ширины с небольшими отступами */
+    }
+
+    .product-card h3 {
+        font-size: 1.2em; /* Уменьшение шрифта заголовка на маленьких экранах */
+    }
+
+    .product-card p {
+        font-size: 0.95em; /* Уменьшение шрифта описания на маленьких экранах */
+    }
+}
+
+/* Стили для изображений */
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
+@keyframes flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        opacity: 1;
+    }
+    20%, 24%, 55% {
+        opacity: 0.4;
+    }
+    21%, 23% {
+        opacity: 0.1;
+    }
+}
+
+.magic-title {
+    font-family: 'Cinzel', serif;
+    font-size: 3rem;
+    text-transform: uppercase;
+    color: #ffd700;
+    text-shadow: 0 0 20px #ffd700, 0 0 30px #ff8c00, 0 0 40px #ff8c00;
+    animation: flicker 1.5s infinite alternate;
+    text-align: center;
+    margin-bottom: 20px;
+}
+ /* Стили для викторины */
+ .quiz-container {
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 20px;
+    border: 2px solid #8B4513;
+    background-color: #FFF5E1;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+.quiz-button {
+    background-color: #8B4513;
+    color: #FFF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+.quiz-button:hover {
+    background-color: #A0522D;
+}
+.product-card .price {
+    font-size: 18px;
+    color: #B8860B;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.product-card .discounted-price {
+    font-size: 16px;
+    color: #FF4500;
+    text-decoration: line-through;
+    margin-right: 10px;
+}
+.product-card .new-price {
+    font-size: 18px;
+    color: #008000;
+    font-weight: bold;
+}
+.discounted-price {
+    color: #8B0000;
+    font-weight: bold;
+}
+
+.new-price {
+    color: #006400;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.container {
+    background-color: rgba(255, 245, 225, 0.95);
+    padding: 50px;
+    border-radius: 15px;
+    max-width: 1300px;
+    margin: 60px auto; /* Увеличьте отступ сверху и снизу для избежания наложения */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    border: 2px solid #A67B5B;
+    position: relative;
+}
+
+.container::before, .container::after {
+    content: "";
+    position: absolute;
+    top: -20px; /* Увеличьте значение, чтобы пунктиры не касались контейнера */
+    bottom: -20px; /* Увеличьте значение, чтобы пунктиры не касались контейнера */
+    left: -20px; /* Увеличьте значение, чтобы пунктиры не касались контейнера */
+    right: -20px; /* Увеличьте значение, чтобы пунктиры не касались контейнера */
+    border: 3px dashed #8B4513;
+    border-radius: 20px; /* Увеличьте радиус для более плавного вида */
+    z-index: -1;
+    opacity: 0.7;
+    transform: rotate(1deg);
+    background-color: rgba(245, 222, 179, 0.1);
+}
+/* Стили для викторины */
+.quiz-container {
+    margin: 40px auto;
+    max-width: 700px;
+    padding: 30px;
+    border: 2px solid #8B4513;
+    background-color: #FFF5E1;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.quiz-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #8B4513;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.quiz-question {
+    font-size: 1.5rem;
+    color: #3B1B09;
+    margin-bottom: 20px;
+}
+
+.quiz-input {
+    padding: 15px;
+    font-size: 1.3rem;
+    width: 80%;
+    max-width: 500px;
+    border: 2px solid #8B4513;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    transition: box-shadow 0.3s;
+}
+
+.quiz-input:focus {
+    outline: none;
+    box-shadow: 0px 0px 10px rgba(139, 69, 19, 0.5);
+}
+
+.quiz-button {
+    background-color: #8B4513;
+    color: #FFF;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 15px;
+}
+
+.quiz-button:hover {
+    background-color: #A0522D;
+    transform: scale(1.05);
+}
+
+.quiz-feedback {
+    font-size: 1.3rem;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.quiz-feedback.green {
+    color: #006400;
+}
+
+.quiz-feedback.red {
+    color: #8B0000;
+}

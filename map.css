@@ -1,0 +1,520 @@
+/* Основные стили для страницы */
+body {
+    background: linear-gradient(135deg, rgba(234, 222, 196, 0.8), rgba(220, 198, 156, 0.8)),
+                url('images/66f157078b534a0001dbf6a6_4.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Georgia', serif;
+    margin: 0;
+    padding: 0;
+    color: #3B1B09;
+    text-shadow: 1px 1px 2px #FFF5E1;
+}
+
+/* Стили для header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #FFDEAD;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 3px dashed #8B4513;
+}
+
+/* Логотип */
+header img {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 100px;
+    width: auto;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+header img:hover {
+    transform: scale(1.05);
+}
+
+/* Навигация */
+nav {
+    display: flex;
+    gap: 20px;
+    background-color: #F5DEB3;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 2px solid #8B4513;
+    font-family: 'Cinzel', serif; /* Обновление стиля шрифта для навигации */
+}
+
+nav a {
+    color: #8B4513;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px 15px;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+/* Анимация при наведении на ссылки в основном меню */
+nav a:hover {
+    background-color: #FFE4B5;
+    border-radius: 5px;
+    color: #5A3A1E;
+    box-shadow: 0px 0px 10px rgba(90, 58, 30, 0.5);
+}
+
+/* Стили для бургер-меню */
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.burger-menu .bar {
+    height: 3px;
+    background-color: #8B4513;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+/* Анимация для бургер-меню при наведении */
+.burger-menu:hover .bar {
+    background-color: #FFE4B5;
+}
+
+/* Анимация бургер-меню для изменения на крестик */
+.burger-menu.open .bar:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.burger-menu.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.open .bar:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Мобильное меню (скрыто по умолчанию) */
+.mobheadnav {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #F5DEB3;
+    padding: 15px;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    z-index: 1000;
+    border-radius: 8px;
+    border: 2px solid #8B4513;
+}
+
+/* Стили для ссылок в мобильном меню */
+.mobheadnav a {
+    color: #8B4513;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px 15px;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+/* Анимация при наведении на ссылки в мобильном меню */
+.mobheadnav a:hover {
+    background-color: #FFE4B5;
+    border-radius: 5px;
+    color: #5A3A1E;
+    box-shadow: 0px 0px 10px rgba(90, 58, 30, 0.5);
+}
+
+/* Убираем маркеры в мобильном меню */
+.mobheadnav ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Показать бургер-меню на мобильных устройствах */
+@media (max-width: 768px) {
+    .burger-menu {
+        display: flex;
+    }
+    .headnav {
+        display: none;
+    }
+    .mobheadnav.open {
+        display: flex;
+    }
+    header img {
+        position: static;
+        margin: 0 auto;
+        display: block;
+    }
+}
+
+/* Увеличенный размер шрифта для элементов навигации */
+nav a, .mobheadnav a {
+    font-size: 20px;
+    font-family: 'Cinzel', serif;
+}
+
+/* Стили для карты */
+#map {
+    height: 70vh;
+    width: 95%;
+    margin: 20px auto;
+    border: 2px solid #8B4513;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Стили для всплывающих окон информации */
+.info-box {
+    background: #FFF5E1;
+    border: 2px solid #8B4513;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    max-width: 200px;
+    font-family: 'Cinzel', serif;
+}
+
+/* Стили для контейнера карты */
+.map-container {
+    max-width: 95%;
+    margin: 0 auto;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Стили для заголовка карты */
+.hero-banner h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 3rem;
+    color: #8B4513;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    margin-top: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 10px;
+    border-bottom: 3px dashed #8B4513;
+}
+/* Стили для слайдера */
+/* Стили для слайдера */
+.slider-container {
+    margin: 20px auto;
+    width: 90%;
+    text-align: center;
+    background-color: #D2B48C;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #8B4513;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+    color: #3B1B09;
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+}
+
+.slider {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 10px;
+    background: #D2691E;
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.9;
+    transition: opacity 0.3s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #FFF5E1;
+    border: 2px solid #3B1B09;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    background: #FFE4B5;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #FFF5E1;
+    border: 2px solid #3B1B09;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.slider::-moz-range-thumb:hover {
+    transform: scale(1.2);
+    background: #FFE4B5;
+}
+
+/* Основные стили для страницы */
+body {
+    background: linear-gradient(135deg, rgba(234, 222, 196, 0.8), rgba(220, 198, 156, 0.8)),
+                url('images/66f157078b534a0001dbf6a6_4.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Georgia', serif;
+    margin: 0;
+    padding: 0;
+    color: #3B1B09;
+    text-shadow: 1px 1px 2px #FFF5E1;
+}
+
+/* Стили для header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #FFDEAD;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 3px dashed #8B4513;
+}
+
+/* Логотип */
+header img {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 100px;
+    width: auto;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+header img:hover {
+    transform: scale(1.05);
+}
+
+/* Навигация */
+nav {
+    display: flex;
+    gap: 20px;
+    background-color: #F5DEB3;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 2px solid #8B4513;
+    font-family: 'Cinzel', serif;
+}
+
+nav a {
+    color: #8B4513;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px 15px;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+nav a:hover {
+    background-color: #FFE4B5;
+    border-radius: 5px;
+    color: #5A3A1E;
+    box-shadow: 0px 0px 10px rgba(90, 58, 30, 0.5);
+}
+
+/* Стили для бургер-меню */
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.burger-menu .bar {
+    height: 3px;
+    background-color: #8B4513;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.burger-menu:hover .bar {
+    background-color: #FFE4B5;
+}
+
+.burger-menu.open .bar:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.burger-menu.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.open .bar:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Мобильное меню */
+.mobheadnav {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #F5DEB3;
+    padding: 15px;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    z-index: 1000;
+    border-radius: 8px;
+    border: 2px solid #8B4513;
+}
+
+/* Стили для мобильного меню */
+.mobheadnav a {
+    color: #8B4513;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px 15px;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.mobheadnav a:hover {
+    background-color: #FFE4B5;
+    border-radius: 5px;
+    color: #5A3A1E;
+    box-shadow: 0px 0px 10px rgba(90, 58, 30, 0.5);
+}
+
+/* Показать бургер-меню на мобильных устройствах */
+@media (max-width: 768px) {
+    .burger-menu {
+        display: flex;
+    }
+    .headnav {
+        display: none;
+    }
+    .mobheadnav.open {
+        display: flex;
+    }
+    header img {
+        position: static;
+        margin: 0 auto;
+        display: block;
+    }
+}
+
+/* Увеличенный размер шрифта для элементов навигации */
+nav a, .mobheadnav a {
+    font-size: 20px;
+    font-family: 'Cinzel', serif;
+}
+
+/* Стили для карты */
+#map {
+    height: 70vh;
+    width: 95%;
+    margin: 20px auto;
+    border: 2px solid #8B4513;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Стили для заголовка карты */
+.hero-banner h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 3rem;
+    color: #8B4513;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    margin-top: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 10px;
+    border-bottom: 3px dashed #8B4513;
+    max-width: 90%; /* Ограничение ширины для лучшего вписывания на экране */
+    margin-left: auto;
+    margin-right: auto;
+    word-wrap: break-word;
+}
+
+/* Адаптивные стили для заголовка */
+@media (max-width: 768px) {
+    .hero-banner h1 {
+        font-size: 2rem; /* Уменьшение размера шрифта на мобильных устройствах */
+        padding: 5px; /* Уменьшение отступов */
+    }
+}
+/* Основные стили для заголовка "Интерактивная карта мифов мира" */
+.hero-banner h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: calc(1.5rem + 1.5vw); /* Используем динамический размер шрифта для адаптивности */
+    color: #8B4513;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    margin-top: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 10px;
+    border-bottom: 3px dashed #8B4513;
+    word-wrap: break-word; /* Разрываем длинные слова, чтобы не вылазили за пределы экрана */
+    max-width: 90%; /* Ограничиваем ширину заголовка, чтобы избежать выхода за пределы экрана */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Адаптивные стили для небольших экранов */
+@media (max-width: 768px) {
+    .hero-banner h1 {
+        font-size: calc(1.2rem + 2vw); /* Делаем шрифт меньше на мобильных устройствах */
+        line-height: 1.2; /* Уменьшаем межстрочный интервал, чтобы заголовок лучше помещался */
+    }
+}
+/* Основные стили для заголовка */
+.hero-banner h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 2.5rem; /* Изменили размер шрифта для лучшей адаптивности */
+    color: #8B4513;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    margin: 20px auto;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 10px;
+    border-bottom: 3px dashed #8B4513;
+    max-width: 90%; /* Ограничили ширину, чтобы текст лучше помещался */
+    word-wrap: break-word;
+}
+
+/* Адаптивные стили для небольших экранов */
+@media (max-width: 768px) {
+    .hero-banner h1 {
+        font-size: 1.8rem; /* Уменьшили размер шрифта на маленьких экранах */
+        line-height: 1.2;
+        padding: 5px; /* Уменьшили отступы */
+        max-width: 95%; /* Слегка увеличили допустимую ширину */
+    }
+}

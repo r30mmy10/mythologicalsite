@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин товаров по мифологии</title>
+    <link rel="stylesheet" type="text/css" href="shopstyle.css">
+    <link rel="icon" href="66f140528b534a0001dbf647_3.png" type="image/x-icon">
+   
+</head>
+<body>
+    <header>
+        <h1 class="magic-title">Магазин товаров по мифологии</h1>
+
+      
+       
+    </header>
+    
+     <!-- Викторина для получения скидки -->
+<div class="quiz-container">
+    <h2 class="quiz-title">Ответьте на вопрос и получите скидку 10%!</h2>
+    <p class="quiz-question">Кто был верховным богом древнегреческого пантеона?</p>
+    <input type="text" id="quiz-answer" class="quiz-input" placeholder="Введите ваш ответ">
+    <button class="quiz-button" id="quiz-button">Ответить</button>
+    <p id="quiz-feedback" class="quiz-feedback"></p>
+</div>
+   
+    <div class="container">
+        <div class="product-card">
+            <img src="DALL·E 2024-11-25 13.42.35 - A detailed and artistic illustration of an ancient Greek amphora, featuring intricate mythological motifs, suitable for a product card on a mythology-.jpg" alt="Амфора">
+            <h3>Греческая амфора</h3>
+            <p>Эта амфора украшена изображениями древнегреческих мифов и станет отличным украшением для вашего дома.</p>
+            <p class="price">Цена: ₽100000</p>
+            <button onclick="addToCart('Древнегреческая амфора', 100000)">Купить</button>
+        </div>
+        <div class="product-card">
+            <img src="DALL·E 2024-11-25 13.49.18 - An enchanting book cover for a mythology book, featuring intricate artwork of ancient gods, mythical creatures, and legendary scenes, with a vibrant c.jpg" alt="Книга по мифологии">
+            <h3>Книга по мифологии</h3>
+            <p>Изучите мифы и легенды древних народов с помощью этой замечательной книги, полной иллюстраций и интересных историй.</p>
+            <p class="price">Цена: ₽5000</p>
+            <button onclick="addToCart('Книга по мифологии', 5000)">Купить</button>
+        </div>
+        <div class="product-card">
+            <img src="DALL·E 2024-11-25 13.51.56 - A set of ancient-inspired incense sticks, emitting gentle aromatic smoke, with a background that evokes the atmosphere of ancient temples and mythical.jpg" alt="Благовония">
+            <h3>Благовония с ароматом древности</h3>
+            <p>Эти благовония помогут вам окунуться в атмосферу древних храмов и мифических ритуалов.</p>
+            <p class="price">Цена: ₽2000</p>
+            <button onclick="addToCart('Благовония с ароматом древности', 2000)">Купить</button>
+        </div>
+        <!-- Добавлены новые товары -->
+        <div class="product-card">
+            <img src="DALL·E 2024-11-21 03.01.00 - A highly detailed and visually stunning image of Thor's hammer, Mjolnir, resting on an ancient stone altar. The hammer is adorned with intricate Norse.webp" alt="Молот Тора">
+            <h3>Молот Тора</h3>
+            <p>Мощный молот Тора, символ защиты и силы, станет прекрасным талисманом для вашего дома.</p>
+            <p class="price">Цена: ₽30000</p>
+            <button onclick="addToCart('Молот Тора', 30000)">Купить</button>
+        </div>
+        
+        <div class="product-card">
+            <img src="DALL·E 2024-11-25 13.54.44 - A realistic depiction of ancient manuscripts, featuring detailed scrolls with aged, weathered paper, inked writings, and intricate symbols. The manusc.jpg" alt="Древние манускрипты">
+            <h3>Древние манускрипты</h3>
+            <p>Эти манускрипты содержат тайные знания древних народов и прекрасно подойдут для вашей коллекции.</p>
+            <p class="price">Цена: ₽10000</p>
+            <button onclick="addToCart('Древние манускрипты', 10000)">Купить</button>
+        </div>
+        <div class="product-card">
+            <img src="DALL·E 2024-11-25 13.57.19 - A mysterious demonic grimoire, adorned with ancient symbols and dark spells. The book has an intricate, ornate cover with eerie red and gold accents, .jpg" alt="Таинственный демонический гримуар">
+            <h3>Таинственный демонический гримуар</h3>
+            <p>Окутанный тайной гримуар с заклинаниями древних времён, для тех, кто готов заглянуть в запретные знания.</p>
+            <p class="price">Цена: ₽50000</p>
+            <button onclick="addToCart('Таинственный демонический гримуар', 50000)">Купить</button>
+        </div>
+    </div>
+    <div class="cart-container">
+        <h2>Корзина</h2>
+        <div id="cart-items"></div>
+        <p id="total-cost">Итого: ₽0</p>
+        <button onclick="removeFromCart()">Удалить последний товар</button>
+        <button onclick="clearCart()">Очистить корзину</button>
+    </div>
+    
+
+    <footer>
+        <p>&copy; 2024 Ваше Имя. Все права защищены.</p>
+        <div class="back-button-container">
+            <a href="index.html" class="back-button">Вернуться на главную страницу</a>
+    </footer>
+    <script>
+        let discountActive = false;  // Переменная для отслеживания скидки
+    
+        document.addEventListener('DOMContentLoaded', function () {
+            // Привязка функции checkAnswer к кнопке "Ответить"
+            document.getElementById('quiz-button').addEventListener('click', checkAnswer);
+        });
+    
+        // Функция проверки ответа на викторину
+        function checkAnswer() {
+            const answer = document.getElementById('quiz-answer').value.trim().toLowerCase();
+            const feedback = document.getElementById('quiz-feedback');
+    
+            if (answer === 'зевс') {
+                feedback.textContent = 'Правильно! Скидка 10% применена.';
+                feedback.style.color = 'green';
+                discountActive = true; // Активируем скидку
+                applyDiscount(); // Применяем скидку к товарам на странице
+            } else {
+                feedback.textContent = 'Неправильный ответ. Попробуйте снова!';
+                feedback.style.color = 'red';
+            }
+        }
+    
+        // Функция применения скидки 10% ко всем товарам
+        function applyDiscount() {
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(card => {
+                const priceElement = card.querySelector('.price');
+                const originalPrice = parseFloat(priceElement.textContent.replace(/[^\d.]/g, ''));
+    
+                if (!isNaN(originalPrice)) {
+                    const discountedPrice = (originalPrice * 0.9).toFixed(2);
+    
+                    // Обновляем старую цену
+                    priceElement.classList.add('discounted-price');
+                    priceElement.innerHTML = `<span style="color: red;">Старая цена: <s>₽${originalPrice}</s></span>`;
+    
+                    // Создаем новый элемент для новой цены
+                    let newPriceElement = card.querySelector('.new-price');
+                    if (!newPriceElement) {
+                        newPriceElement = document.createElement('p');
+                        newPriceElement.classList.add('new-price');
+                        card.appendChild(newPriceElement);
+                    }
+                    newPriceElement.innerHTML = `<span style="color: green;">Новая цена: ₽${discountedPrice}</span>`;
+                } else {
+                    console.error("Ошибка: не удалось прочитать исходную цену для товара");
+                }
+            });
+        }
+    
+        let cart = [];
+    
+        function addToCart(productName, productPrice) {
+            let finalPrice = productPrice;
+    
+            // Применение скидки, если она активна
+            if (discountActive) {
+                finalPrice = (productPrice * 0.9).toFixed(2);
+            }
+    
+            const existingProduct = cart.find(item => item.name === productName);
+            if (existingProduct) {
+                existingProduct.quantity++;
+            } else {
+                cart.push({ name: productName, price: parseFloat(finalPrice), quantity: 1 });
+            }
+            updateCartDisplay();
+    
+            // Найдем кнопку, на которую нажал пользователь
+            const button = event.target;
+    
+            // Создаем копию изображения товара для анимации
+            const productCard = button.closest('.product-card');
+            const productImage = productCard.querySelector('img');
+            const flyImage = productImage.cloneNode(true);
+    
+            // Устанавливаем стили для анимации
+            const rect = productImage.getBoundingClientRect();
+            flyImage.classList.add('fly-item');
+            flyImage.style.position = 'absolute';
+            flyImage.style.top = `${rect.top + window.scrollY}px`;
+            flyImage.style.left = `${rect.left + window.scrollX}px`;
+            flyImage.style.width = `${productImage.offsetWidth}px`;
+            flyImage.style.height = `${productImage.offsetHeight}px`;
+    
+            document.body.appendChild(flyImage);
+    
+            // Координаты корзины для анимации
+            const cartElement = document.querySelector('.cart-container');
+            const cartRect = cartElement.getBoundingClientRect();
+    
+            // Добавляем анимацию к элементу
+            flyImage.animate(
+                [
+                    { top: `${rect.top + window.scrollY}px`, left: `${rect.left + window.scrollX}px` },
+                    { top: `${cartRect.top + window.scrollY}px`, left: `${cartRect.left + window.scrollX}px`, transform: 'scale(0.2)', opacity: 0 }
+                ],
+                {
+                    duration: 1000,
+                    easing: 'ease-in-out',
+                    fill: 'forwards'
+                }
+            );
+    
+            // Удаляем элемент после завершения анимации
+            setTimeout(() => {
+                flyImage.remove();
+            }, 1000);
+        }
+    
+        function removeFromCart() {
+            if (cart.length > 0) {
+                cart.pop();
+                updateCartDisplay();
+            }
+        }
+    
+        function clearCart() {
+            cart = [];
+            updateCartDisplay();
+        }
+    
+        function updateCartDisplay() {
+            const cartContainer = document.getElementById('cart-items');
+            cartContainer.innerHTML = '';
+            let totalCost = 0;
+            cart.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.textContent = `${item.name} - ${item.quantity} x ${item.price} = ₽${(item.quantity * item.price).toFixed(2)}`;
+                cartContainer.appendChild(cartItem);
+                totalCost += item.quantity * item.price;
+            });
+            document.getElementById('total-cost').textContent = `Итого: ₽${totalCost.toFixed(2)}`;
+        }
+    
+        function filterProducts(arr, a, b) {
+            return arr.filter(item => item.price >= a && item.price <= b);
+        }
+    </script>
+    
+</body>
+</html>

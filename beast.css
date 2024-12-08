@@ -1,0 +1,637 @@
+/* Основные стили для страницы */
+body {
+    background: linear-gradient(135deg, rgba(234, 222, 196, 0.8), rgba(220, 198, 156, 0.8)),
+                url('images/66f157078b534a0001dbf6a6_4.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Georgia', serif;
+    margin: 0;
+    padding: 0;
+    color: #3B1B09;
+    text-shadow: 1px 1px 2px #FFF5E1;
+}
+
+/* Стили для header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #FFDEAD;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 3px dashed #8B4513;
+}
+
+/* Логотип */
+header img {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 100px;
+    width: auto;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+header img:hover {
+    transform: scale(1.05);
+}
+
+/* Навигация */
+nav {
+    display: flex;
+    gap: 20px;
+    background-color: #F5DEB3;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 2px solid #8B4513;
+    font-family: 'Cinzel', serif;
+}
+
+nav a {
+    color: #8B4513;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px 15px;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+/* Анимация при наведении на ссылки в основном меню */
+nav a:hover {
+    background-color: #FFE4B5;
+    border-radius: 5px;
+    color: #5A3A1E;
+    box-shadow: 0px 0px 10px rgba(90, 58, 30, 0.5);
+}
+
+/* Стили для бургер-меню */
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.burger-menu .bar {
+    height: 3px;
+    background-color: #8B4513;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+/* Анимация для бургер-меню при наведении */
+.burger-menu:hover .bar {
+    background-color: #FFE4B5;
+}
+
+/* Анимация бургер-меню для изменения на крестик */
+.burger-menu.open .bar:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.burger-menu.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.open .bar:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Мобильное меню (скрыто по умолчанию) */
+.mobheadnav {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #F5DEB3;
+    padding: 15px;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    z-index: 1000;
+    border-radius: 8px;
+    border: 2px solid #8B4513;
+}
+
+/* Стили для ссылок в мобильном меню */
+.mobheadnav a {
+    color: #8B4513;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px 15px;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+/* Анимация при наведении на ссылки в мобильном меню */
+.mobheadnav a:hover {
+    background-color: #FFE4B5;
+    border-radius: 5px;
+    color: #5A3A1E;
+    box-shadow: 0px 0px 10px rgba(90, 58, 30, 0.5);
+}
+
+/* Убираем маркеры в мобильном меню */
+.mobheadnav ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Показать бургер-меню на мобильных устройствах */
+@media (max-width: 768px) {
+    .burger-menu {
+        display: flex;
+    }
+    .headnav {
+        display: none;
+    }
+    .mobheadnav.open {
+        display: flex;
+    }
+    header img {
+        position: static;
+        margin: 0 auto;
+        display: block;
+    }
+}
+
+/* Увеличенный размер шрифта для элементов навигации */
+nav a, .mobheadnav a {
+    font-size: 20px;
+    font-family: 'Cinzel', serif;
+}
+
+/* Стили для галереи существ */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.creature-card {
+    width: 200px;
+    height: 300px;
+    perspective: 1000px;
+}
+
+.creature-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.creature-card:hover .creature-card-inner {
+    transform: rotateY(180deg);
+}
+
+.creature-card-front, .creature-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+}
+
+.creature-card-front {
+    background-color: #FFF5E1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.creature-card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.creature-card-back {
+    background-color: #FFDEAD;
+    transform: rotateY(180deg);
+    padding: 20px;
+    font-family: 'Cinzel', serif;
+    text-align: center;
+    color: #3B1B09;
+    font-size: 1rem;
+}
+body {
+    background: linear-gradient(135deg, rgba(234, 222, 196, 0.8), rgba(220, 198, 156, 0.8)),
+                url('images/66f157078b534a0001dbf6a6_4.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Georgia', serif;
+    margin: 0;
+    padding: 0;
+    color: #3B1B09;
+    text-shadow: 1px 1px 2px #FFF5E1;
+}
+
+/* Стили для галереи существ */
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.mythical-creature {
+    position: relative;
+    width: 200px;
+    height: 300px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.mythical-creature img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.mythical-creature .creature-description {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 245, 225, 0.9);
+    color: #3B1B09;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.1rem;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    padding: 10px;
+}
+
+.mythical-creature.flipped img {
+    transform: rotateY(180deg);
+}
+
+.mythical-creature.flipped .creature-description {
+    transform: rotateY(0deg);
+}
+
+/* Стили для header и меню */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #FFDEAD;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 3px dashed #8B4513;
+}
+
+header img {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 100px;
+    width: auto;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+header img:hover {
+    transform: scale(1.05);
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+    background-color: #F5DEB3;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 2px solid #8B4513;
+    font-family: 'Cinzel', serif;
+}
+
+nav a {
+    color: #8B4513;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px 15px;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+nav a:hover {
+    background-color: #FFE4B5;
+    border-radius: 5px;
+    color: #5A3A1E;
+    box-shadow: 0px 0px 10px rgba(90, 58, 30, 0.5);
+}
+
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.burger-menu .bar {
+    height: 3px;
+    background-color: #8B4513;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.burger-menu:hover .bar {
+    background-color: #FFE4B5;
+}
+
+.burger-menu.open .bar:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.burger-menu.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.open .bar:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+.mobheadnav {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #F5DEB3;
+    padding: 15px;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    z-index: 1000;
+    border-radius: 8px;
+    border: 2px solid #8B4513;
+}
+
+.mobheadnav a {
+    color: #8B4513;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px 15px;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.mobheadnav a:hover {
+    background-color: #FFE4B5;
+    border-radius: 5px;
+    color: #5A3A1E;
+    box-shadow: 0px 0px 10px rgba(90, 58, 30, 0.5);
+}
+
+@media (max-width: 768px) {
+    .burger-menu {
+        display: flex;
+    }
+    .headnav {
+        display: none;
+    }
+    .mobheadnav.open {
+        display: flex;
+    }
+    header img {
+        position: static;
+        margin: 0 auto;
+        display: block;
+    }
+}
+/* Основные стили для галереи существ */
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.mythical-creature {
+    position: relative;
+    width: 300px; /* Увеличьте ширину для более широких изображений */
+    height: 400px; /* Увеличьте высоту для поддержания пропорции */
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.mythical-creature img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    object-fit: cover; /* Изменено для сохранения пропорций изображения */
+}
+
+.mythical-creature .creature-description {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 245, 225, 0.9);
+    color: #3B1B09;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.1rem;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    padding: 10px;
+}
+
+.mythical-creature.flipped img {
+    transform: rotateY(180deg);
+}
+
+.mythical-creature.flipped .creature-description {
+    transform: rotateY(0deg);
+}
+
+/* Стили для адаптивности */
+@media (max-width: 768px) {
+    .mythical-creature {
+        width: 80%; /* Уменьшение ширины для мобильных устройств */
+        max-width: 350px;
+        height: auto;
+    }
+
+    .mythical-creature img {
+        height: auto; /* Автоматическая высота для адаптации к ширине */
+    }
+
+    .gallery-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+/* Стили для галереи существ */
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.mythical-creature {
+    width: 300px;
+    height: 400px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.creature-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.mythical-creature.flipped .creature-card-inner {
+    transform: rotateY(180deg);
+}
+
+.creature-card-front, .creature-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.creature-card-front {
+    background-color: #FFF5E1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.creature-card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.creature-card-back {
+    background-color: #FFDEAD;
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-family: 'Cinzel', serif;
+    text-align: center;
+    color: #3B1B09;
+    font-size: 1rem;
+}
+/* Стили для заголовка "Бестиарий" */
+.hero-banner h1 {
+    font-family: 'Cinzel Decorative', serif; /* Мифологичный шрифт */
+    font-size: 3.5rem; /* Увеличение размера */
+    color: #8B4513; /* Цвет в тон к предыдущим элементам сайта */
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4); /* Тень для большего эффекта */
+    text-align: center;
+    margin-top: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 10px;
+    border-bottom: 3px dashed #8B4513; /* Эффект границы, как и раньше */
+}
+
+/* Стили для галереи существ */
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.mythical-creature {
+    position: relative;
+    width: 220px; /* Немного увеличен размер для лучшего отображения */
+    height: 320px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.mythical-creature img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.mythical-creature .creature-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.mythical-creature .creature-card-front, 
+.mythical-creature .creature-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.mythical-creature .creature-card-back {
+    background-color: #FFF5E1; /* Цвет, сочетающийся с мифологией */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotateY(180deg);
+    padding: 20px;
+    text-align: center;
+    color: #3B1B09;
+    font-size: 1.3rem; /* Увеличенный размер текста */
+    font-family: 'Cinzel', serif; /* Мифологичный шрифт */
+    line-height: 1.4; /* Лучше читаемость */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Легкая тень для эффекта */
+}
+
+.mythical-creature.flipped .creature-card-inner {
+    transform: rotateY(180deg);
+}

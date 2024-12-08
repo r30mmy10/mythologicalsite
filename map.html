@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивная карта мифов мира</title>
+    <link rel="stylesheet" href="map.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+
+    <link rel="icon" href="66f140528b534a0001dbf647_3.png" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+
+    <style>
+        /* Плавная анимация увеличения для иконок мифов при наведении */
+        .leaflet-marker-icon.icon-hover {
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .leaflet-marker-icon.icon-hover:hover {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        /* Стили для улучшения отображения иконок и всплывающих окон */
+        .info-box {
+            background: #f9f4e8;
+            border: 2px solid #8B4513;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            max-width: 220px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+        }
+
+        /* Стили для текста заголовка */
+        .hero-banner h1 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3rem;
+            color: #8B4513;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            margin-top: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="66f140528b534a0001dbf647_3.png" alt="Mythology Image" class="myth-image">
+
+        <nav class="headnav">
+            <a href="index.html">Главная</a>
+            <a href="shop.html">Лавка</a>
+            <a href="audiomy.html">Мифы и легенды</a>
+            <a href="beast.html">Бестиарий</a>
+        </nav>
+
+        <div class="burger-menu" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <nav class="mobheadnav">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="shop.html">Лавка</a></li>
+                <li><a href="audiomy.html">Мифы и легенды</a></li>
+                <li><a href="beast.html">Бестиарий</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero-banner">
+        <h1>Карта мифов мира</h1>
+    </div>
+
+    <div class="map-container">
+        <div id="map"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Ваше Имя. Все права защищены.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Инициализация карты с ограничением на границы и максимальный масштаб
+            var map = L.map('map', {
+                worldCopyJump: false,
+                attributionControl: false, // Отключаем стандартную атрибуцию
+                maxBounds: [
+                    [-85, -180], // Ограничение для южной и западной границы карты
+                    [85, 180] // Ограничение для северной и восточной границы карты
+                ]
+            }).setView([20, 0], 2);
+
+            // Добавление слоя карты
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                noWrap: true // Запрет на бесконечную прокрутку по горизонтали
+            }).addTo(map);
+
+            // Значки мифов с применением класса icon-hover
+            var icons = {
+                greek: L.icon({
+                    iconUrl: 'greek.jpg',
+                    iconSize: [64, 64],
+                    iconAnchor: [32, 64],
+                    popupAnchor: [0, -64],
+                    className: 'icon-hover'
+                }),
+                norse: L.icon({
+                    iconUrl: 'nord.jpg',
+                    iconSize: [64, 64],
+                    iconAnchor: [32, 64],
+                    popupAnchor: [0, -64],
+                    className: 'icon-hover'
+                }),
+                egyptian: L.icon({
+                    iconUrl: 'egypt.jpg',
+                    iconSize: [64, 64],
+                    iconAnchor: [32, 64],
+                    popupAnchor: [0, -64],
+                    className: 'icon-hover'
+                }),
+                slavic: L.icon({
+                    iconUrl: 'slavic.jpg',
+                    iconSize: [64, 64],
+                    iconAnchor: [32, 64],
+                    popupAnchor: [0, -64],
+                    className: 'icon-hover'
+                }),
+                indian: L.icon({
+                    iconUrl: 'indian.jpg',
+                    iconSize: [64, 64],
+                    iconAnchor: [32, 64],
+                    popupAnchor: [0, -64],
+                    className: 'icon-hover'
+                }),
+                japanese: L.icon({
+                    iconUrl: 'japan.jpg',
+                    iconSize: [64, 64],
+                    iconAnchor: [32, 64],
+                    popupAnchor: [0, -64],
+                    className: 'icon-hover'
+                }),
+                chinese: L.icon({
+                    iconUrl: 'china.jpg',
+                    iconSize: [64, 64],
+                    iconAnchor: [32, 64],
+                    popupAnchor: [0, -64],
+                    className: 'icon-hover'
+                }),
+                celtic: L.icon({
+                    iconUrl: 'celtic.jpg',
+                    iconSize: [64, 64],
+                    iconAnchor: [32, 64],
+                    popupAnchor: [0, -64],
+                    className: 'icon-hover'
+                }),
+                aztec: L.icon({
+                    iconUrl: 'az.jpg',
+                    iconSize: [64, 64],
+                    iconAnchor: [32, 64],
+                    popupAnchor: [0, -64],
+                    className: 'icon-hover'
+                })
+            };
+
+            // Добавление маркеров для разных регионов
+            L.marker([37.9838, 23.7275], {icon: icons.greek}).addTo(map)
+                .bindPopup("<div class='info-box'><strong>Греческая мифология</strong><br>Греческая мифология наполнена легендами о могущественных богах, таких как Зевс, Посейдон и Афина. Эти истории рассказывают о жизни бессмертных богов Олимпа, героических подвигах Геракла, аргонавтов и эпических битвах, таких как Троянская война. Мифология стала основой для искусства, литературы и философии, формируя культуру на века.</div>");
+
+            L.marker([60.472, 8.4689], {icon: icons.norse}).addTo(map)
+                .bindPopup("<div class='info-box'><strong>Скандинавская мифология</strong><br>Скандинавская мифология рассказывает о суровых богах и воинственных героях. Один — бог мудрости, Тор — защитник людей с молотом Мьёльниром, а Локи — непредсказуемый трикстер. Эти мифы отражают цикличность жизни и природы, представляя апокалипсис — Рагнарёк, в котором герои сражаются в последней битве, где даже боги не бессмертны.</div>");
+
+            L.marker([30.0444, 31.2357], {icon: icons.egyptian}).addTo(map)
+                .bindPopup("<div class='info-box'><strong>Египетская мифология</strong><br>Египетская мифология связана с великими богами, такими как Ра — бог солнца, Осирис — бог загробного мира, и Исида — богиня магии и материнства. Эти боги управляют миром людей и фараонов, которые считались воплощением божественной власти на Земле. Мифы объясняли природные циклы, жизнь и смерть, и возрождение, воплощённое в мифе о воскресении Осириса.</div>");
+
+            L.marker([55.751244, 37.618423], {icon: icons.slavic}).addTo(map)
+                .bindPopup("<div class='info-box'><strong>Славянская мифология</strong><br>Славянская мифология включает мифы о природе и духах, таких как Перун — бог грома, Велес — покровитель животных и магии, и Лада — богиня любви. Мифы рассказывали о духах, таких как домовые и лешие, которые охраняли дома и леса. Славяне почитали силу природы и её духи, веря, что они определяют судьбу и защищают людей.</div>");
+
+            L.marker([28.6139, 77.2090], {icon: icons.indian}).addTo(map)
+                .bindPopup("<div class='info-box'><strong>Индийская мифология</strong><br>Индийская мифология представлена великим пантеоном богов: Брахма — создатель мира, Вишну — защитник, и Шива — разрушитель. Эпические поэмы, такие как «Махабхарата» и «Рамаяна», описывают героические приключения и философские учения, формируя духовные и моральные основы жизни. Богатство мифов отражает разнообразие культуры, искусства и религий Индии.</div>");
+
+            L.marker([35.6895, 139.6917], {icon: icons.japanese}).addTo(map)
+                .bindPopup("<div class='info-box'><strong>Японская мифология</strong><br>Японская мифология рассказывает о ками — духах и божествах, которые населяют горы, реки и леса. Аматерасу — богиня солнца, Сусаноо — дух моря и бури. Японские мифы отражают глубокую связь людей с природой и почитание всех её проявлений, а также рассказывают о создании Японских островов и происхождении императорской династии.</div>");
+
+            L.marker([39.9042, 116.4074], {icon: icons.chinese}).addTo(map)
+                .bindPopup("<div class='info-box'><strong>Китайская мифология</strong><br>Китайская мифология богата легендами о драконах, бессмертных и героических подвигах. Нюйва — богиня-творец, создавшая людей, Юй Великий — укротитель потопа, а Нефритовый император — правитель небес. Мифы учат гармонии между природой и человечеством, уважению к предкам и поиску бессмертия.</div>");
+
+            L.marker([53.3498, -6.2603], {icon: icons.celtic}).addTo(map)
+                .bindPopup("<div class='info-box'><strong>Кельтская мифология</strong><br>Кельтская мифология полна историй о героических воинах и магических существах. Боги, такие как Дагда — бог плодородия и мудрости, и Мориган — богиня войны, управляли судьбами людей. Мифы рассказывают о волшебных артефактах, друидах, которые были хранителями древних знаний, и вечной борьбе между силами света и тьмы.</div>");
+
+            L.marker([19.4326, -99.1332], {icon: icons.aztec}).addTo(map)
+                .bindPopup("<div class='info-box'><strong>Ацтекская мифология</strong><br>Ацтекская мифология описывает пантеон богов, таких как Уицилопочтли — бог солнца и войны, Кетцалькоатль — Пернатый Змей, бог мудрости. Эти боги требовали жертвоприношений, чтобы поддерживать равновесие во вселенной. Мифы отражали связь ацтеков с природой, их веру в цикличность времени и необходимость сохранения порядка в мире.</div>");
+
+            // Слайдер для управления масштабом карты
+            var zoomSlider = document.getElementById("zoomSlider");
+            zoomSlider.addEventListener("input", function() {
+                map.setZoom(parseInt(zoomSlider.value));
+            });
+
+            // Обновление положения слайдера при изменении масштаба карты
+            map.on("zoomend", function() {
+                zoomSlider.value = map.getZoom();
+            });
+        });
+
+        function toggleMenu() {
+            const burgerMenu = document.querySelector('.burger-menu');
+            const mobileNav = document.querySelector('.mobheadnav');
+            burgerMenu.classList.toggle('open');
+            mobileNav.classList.toggle('open');
+        }
+    </script>
+    <div class="slider-container">
+        <input type="range" min="2" max="18" value="2" class="slider" id="zoomSlider">
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бестиарий</title>
+    <link rel="stylesheet" href="beast.css">
+    <link rel="icon" href="66f140528b534a0001dbf647_3.png" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <header>
+        <img src="66f140528b534a0001dbf647_3.png" alt="Mythology Image" class="myth-image">
+
+        <nav class="headnav">
+            <a href="index.html">Главная</a>
+            <a href="shop.html">Лавка</a>
+            <a href="audiomy.html">Мифы и легенды</a>
+            <a href="map.html">Мифология на карте</a>
+        </nav>
+
+        <div class="burger-menu" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <nav class="mobheadnav">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="shop.html">Лавка</a></li>
+                <li><a href="audiomy.html">Мифы и легенды</a></li>
+                <li><a href="map.html">Мифология на карте</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero-banner">
+        <h1>Бестиарий</h1>
+    </div>
+
+    <div class="gallery-container">
+        <div class="mythical-creature">
+            <div class="creature-card-inner">
+                <div class="creature-card-front">
+                    <img src="mermaid.jpg" alt="Русалка">
+                </div>
+                <div class="creature-card-back">
+                    <p>Русалка - водяная нимфа из славянской мифологии, привлекающая путников своим пением.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mythical-creature">
+            <div class="creature-card-inner">
+                <div class="creature-card-front">
+                    <img src="dom.jpg" alt="Домовой">
+                </div>
+                <div class="creature-card-back">
+                    <p>Домовой - добрый дух-хранитель дома, который помогает хозяевам, если его почитают и угощают.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mythical-creature">
+            <div class="creature-card-inner">
+                <div class="creature-card-front">
+                    <img src="леший.jpg" alt="Леший">
+                </div>
+                <div class="creature-card-back">
+                    <p>Леший - дух леса в славянской мифологии, хранитель лесов и всех его обитателей.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mythical-creature">
+            <div class="creature-card-inner">
+                <div class="creature-card-front">
+                    <img src="dwarf.jpg" alt="Гном">
+                </div>
+                <div class="creature-card-back">
+                    <p>Гном - маленькое существо из германского фольклора, живущее под землёй и охраняющее клады.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mythical-creature">
+            <div class="creature-card-inner">
+                <div class="creature-card-front">
+                    <img src="грифон.jpg" alt="Грифон">
+                </div>
+                <div class="creature-card-back">
+                    <p>Грифон - мифическое существо с телом льва и головой орла, символ силы и мудрости.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mythical-creature">
+            <div class="creature-card-inner">
+                <div class="creature-card-front">
+                    <img src="сфинкс.jpg" alt="Сфинкс">
+                </div>
+                <div class="creature-card-back">
+                    <p>Сфинкс - мифическое существо с телом льва и головой человека, известное своими загадками.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mythical-creature">
+            <div class="creature-card-inner">
+                <div class="creature-card-front">
+                    <img src="нимфа.jpg" alt="Нимфа">
+                </div>
+                <div class="creature-card-back">
+                    <p>Нимфа - природный дух в греческой мифологии, связанный с лесами, горами и водоёмами.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mythical-creature">
+            <div class="creature-card-inner">
+                <div class="creature-card-front">
+                    <img src="сатир.jpg" alt="Сатир">
+                </div>
+                <div class="creature-card-back">
+                    <p>Сатир - получеловек-полукозёл, известный своей любовью к вину, танцам и музыке.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mythical-creature">
+            <div class="creature-card-inner">
+                <div class="creature-card-front">
+                    <img src="сирена.jpg" alt="Сирена">
+                </div>
+                <div class="creature-card-back">
+                    <p>Сирена - мифическое существо, заманивающее моряков своим волшебным голосом.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mythical-creature">
+            <div class="creature-card-inner">
+                <div class="creature-card-front">
+                    <img src="фенрир.jpg" alt="Фенрир">
+                </div>
+                <div class="creature-card-back">
+                    <p>Фенрир - гигантский волк из скандинавской мифологии, который, согласно пророчествам, сыграет важную роль в Рагнарёке.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Ваше Имя. Все права защищены.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const creatures = document.querySelectorAll(".mythical-creature");
+            creatures.forEach(creature => {
+                creature.addEventListener("click", function() {
+                    this.classList.toggle("flipped");
+                });
+            });
+        });
+
+        function toggleMenu() {
+            const burgerMenu = document.querySelector('.burger-menu');
+            const mobileNav = document.querySelector('.mobheadnav');
+            burgerMenu.classList.toggle('open');
+            mobileNav.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
+

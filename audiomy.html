@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аудио Библиотека Мифов и Легенд</title>
+    <link rel="stylesheet" href="audiomy.css">
+    <link rel="icon" href="66f140528b534a0001dbf647_3.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <img src="66f140528b534a0001dbf647_3.png" alt="Mythology Image" class="myth-image">
+        
+        <nav class="headnav">
+            <a href="index.html">Главная</a>
+            <a href="shop.html">Лавка</a>
+            <a href="map.html">Мифология на карте</a>
+            <a href="beast.html">Бестиарий</a>
+        </nav>
+        
+        <div class="burger-menu" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        
+        <nav class="mobheadnav">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="shop.html">Лавка</a></li>
+                <li><a href="map.html">Мифология на карте</a></li>
+                <li><a href="beast.html">Бестиарий</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Крупный заголовок с эффектом свечения -->
+    <div class="hero-banner">
+        <h1>АУДИО БИБЛИОТЕКА МИФОВ И ЛЕГЕНД</h1>
+    </div>
+
+    <div class="container">
+        <div class="audio-card">
+            <img src="photo_2024-12-01 05.08.26.jpeg" alt="Греческая мифология" class="audio-card-image">
+            <h3>Греческая мифология: Миф о Зевсе</h3>
+            <audio controls>
+                <source src="зевс.mp3" type="audio/mpeg">
+                Ваш браузер не поддерживает воспроизведение аудио.
+            </audio>
+        </div>
+        
+        <div class="audio-card">
+            <img src="photo_2024-12-01 05.23.49.jpeg" alt="Скандинавская мифология" class="audio-card-image">
+            <h3>Скандинавская мифология: Миф об Одине</h3>
+            <audio controls>
+                <source src="один.mp3" type="audio/mpeg">
+                Ваш браузер не поддерживает воспроизведение аудио.
+            </audio>
+        </div>
+        
+        <div class="audio-card">
+            <img src="photo_2024-12-01 05.26.31.jpeg" alt="Египетская мифология" class="audio-card-image">
+            <h3>Египетская мифология: Миф об Осирисе</h3>
+            <audio controls>
+                <source src="осирис.mp3" type="audio/mpeg">
+                Ваш браузер не поддерживает воспроизведение аудио.
+            </audio>
+        </div>
+        
+        <div class="audio-card">
+            <img src="photo_2024-12-01 05.27.50.jpeg" alt="Славянская мифология" class="audio-card-image">
+            <h3>Славянская мифология: Миф о Перуне</h3>
+            <audio controls>
+                <source src="перун.mp3" type="audio/mpeg">
+                Ваш браузер не поддерживает воспроизведение аудио.
+            </audio>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 Ваше Имя. Все права защищены.</p>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+        const parallax = document.querySelector('.parallax');
+        let scrollPosition = window.scrollY;
+        parallax.style.transform = 'translateY(' + scrollPosition * 0.5 + 'px)';
+    });
+        function toggleMenu() {
+            const burgerMenu = document.querySelector('.burger-menu');
+            const mobileNav = document.querySelector('.mobheadnav');
+            burgerMenu.classList.toggle('open');
+            mobileNav.classList.toggle('open');
+
+        }
+        
+    </script>
+</body>
+</html>
